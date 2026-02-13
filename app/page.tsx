@@ -167,17 +167,15 @@ export default function Home() {
   const getResponsiveImage = (src: string) => {
     if (!isDesktop) return src
 
-    // Handle numbered images dynamically
-    const imagesMatch = src.match(/^\/images(\d+)\.jpg$/)
-    if (imagesMatch) {
-      return `/images${imagesMatch[1]}-desktop.jpg`
-    }
-
     switch (src) {
       case "/lock.jpg":
         return "/lock-desktop.jpg"
       case "/gift.jpg":
         return "/gift-desktop.jpg"
+      case "/images1.jpg":
+        return "/images1-desktop.jpg"
+      case "/images2.jpg":
+        return "/images2-desktop.jpg"
       case "/message.jpg":
         return "/message-desktop.jpg"
       case "/song1.jpg":
@@ -212,12 +210,6 @@ export default function Home() {
       "/gift.jpg",
       "/images1.jpg",
       "/images2.jpg",
-      "/images3.jpg",
-      "/images4.jpg",
-      "/images5.jpg",
-      "/images6.jpg",
-      "/images7.jpg",
-      "/images8.jpg",
       "/message.jpg",
       "/song1.jpg",
       "/song2.jpg",
@@ -534,14 +526,16 @@ export default function Home() {
                   ref={imagesScrollRef}
                   className="relative w-full h-full overflow-y-auto"
                 >
-                  {Array.from({ length: isDesktop ? 8 : 7 }).map((_, i) => (
-                    <img
-                      key={i}
-                      src={getResponsiveImage(`/images${i + 1}.jpg`)}
-                      alt={`Images part ${i + 1}`}
-                      className="w-full h-auto block"
-                    />
-                  ))}
+                  <img
+                    src={getResponsiveImage("/images1.jpg")}
+                    alt="Images part 1"
+                    className="w-full h-auto block"
+                  />
+                  <img
+                    src={getResponsiveImage("/images2.jpg")}
+                    alt="Images part 2"
+                    className="w-full h-auto block"
+                  />
                   <button
                     type="button"
                     onClick={() => {
